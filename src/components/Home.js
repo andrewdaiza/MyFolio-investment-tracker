@@ -68,7 +68,6 @@ const Home = () => {
   // Add transaction to state array
   const handleTransaction = (data) => {
     setTransactions([...transactions, data]);
-    console.log(transactions);
   };
 
   return (
