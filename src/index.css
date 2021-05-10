@@ -113,6 +113,9 @@ body {
   padding: 10px;
   width: 100%;
 }
+.transaction-name {
+  font-weight: 700;
+}
 
 .search-container {
   display: flex;

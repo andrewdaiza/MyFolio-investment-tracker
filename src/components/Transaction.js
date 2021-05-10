@@ -4,7 +4,10 @@ const Transaction = ({ transaction }) => {
   return (
     <div className='transaction-card'>
       <div>
-        {transaction.symbol} {": "}
+        <span className='transaction-name'>
+          {transaction.symbol}
+          {": "}
+        </span>
         <span className='transaction-amount'>{transaction.amount}</span>
       </div>
     </div>

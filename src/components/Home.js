@@ -16,6 +16,7 @@ const Home = () => {
   const [searchState, setSearchState] = useState("");
   const [transactions, setTransactions] = useState([]);
   const [limit, setLimit] = useState(10);
+  const [error, setError] = useState(false);
 
   // Run function to fetch API data and initialize default value
   const initialFetchData = async () => {
@@ -25,6 +26,7 @@ const Home = () => {
       setSelectedCoin(cryptoDataAPI.data[0]);
     } catch (e) {
       console.error(e);
+      setError(true);
     }
   };
   // Run function to fetch API data
@@ -87,14 +89,18 @@ const Home = () => {
         </div>
         <div>
           <CryptoTitlebar />
-          {cryptoData.map((coin) => (
-            <CryptoTile
-              key={coin.id}
-              data={coin}
-              selected={selectedCoin}
-              onClick={handleSelect}
-            />
-          ))}
+          {error ? (
+            <div>Failed to load Crypto Data</div>
+          ) : (
+            cryptoData.map((coin) => (
+              <CryptoTile
+                key={coin.id}
+                data={coin}
+                selected={selectedCoin}
+                onClick={handleSelect}
+              />
+            ))
+          )}
         </div>
       </div>
     </>
